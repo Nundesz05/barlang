@@ -32,30 +32,73 @@
             background-color: greenyellow;
             border: 1px black solid;
         }
+        .piros {
+            background-color: red;
+        }
     </style>
     <script>
-        function start(){
-            let tomb=[];
+        tomb1=[0,0,0,0,0,0];
+        tomb2=[];
+        szam=0; 
+        jo=true;
+        html2="";
+
+        function gondol(){
+            let html1="";
+            for(let i =0; i<6;i++) {
+                randomszam=Math.floor(Math.random()*8)+1;
+                tomb1[i]=randomszam;
+                html1+="<img src='icon"+randomszam+"n.png'>";
+            }
+        
+            document.getElementById("box1").innerHTML=html1;
+            html2="";
+            szam=0;
+            jo=true;
+        
+        }
+        function start(){    
             let html1="";
             let html3="";
             for(let i =0; i<6;i++) {
-                let randomszam=Math.floor(Math.random()*8)+1;
-                tomb.push(randomszam);
-            }
-           
-            for(let a of tomb) {
-                html1+="<img src='icon"+a+"n.png'>";
+                randomszam=Math.floor(Math.random()*8)+1;
+                tomb1[i]=randomszam;
+                html1+="<img src='icon"+randomszam+"n.png'>";
             }
             document.getElementById("box1").innerHTML=html1;
         
             for(let i =1; i<9;i++) {
-                html3+="<img src='icon"+i+"k.png'>";
-                
+                html3+="<img src='icon"+i+"k.png' onclick='katt("+i+")'>";
             }
             document.getElementById("box3").innerHTML=html3;
         
         }
+        
+        function katt(i){
+            
+            console.log("icon szam: "+i);
+            console.log("tomb szam "+tomb1);
+            if(jo==false || szam==6) {
+                gondol();
+                
 
+            }
+            
+            else {
+                if(i==tomb1[szam]) {
+                    html2+="<img src='icon"+i+"n.png'>";    
+                }
+                 else{
+                    jo=false;
+                    html2+="<img class='piros' src='icon"+i+"n.png'>";
+        
+            }
+            }
+            console.log("tomb2 "+tomb2);
+            document.getElementById("box2").innerHTML=html2;
+            szam++;
+            
+        }
 
     </script>
 </head>
