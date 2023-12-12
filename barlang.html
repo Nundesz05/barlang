@@ -23,13 +23,48 @@
         #box2 {
             height: 96px;
         }
+        #box3 img{
+            margin: 1px;
+            padding: 2px;
+            border: 1px lightgrey solid;
+        }
+        #box3 img:hover{
+            background-color: greenyellow;
+            border: 1px black solid;
+        }
     </style>
+    <script>
+        function start(){
+            let tomb=[];
+            let html1="";
+            let html3="";
+            for(let i =0; i<6;i++) {
+                let randomszam=Math.floor(Math.random()*8)+1;
+                tomb.push(randomszam);
+            }
+           
+            for(let a of tomb) {
+                html1+="<img src='icon"+a+"n.png'>";
+            }
+            document.getElementById("box1").innerHTML=html1;
+        
+            for(let i =1; i<9;i++) {
+                html3+="<img src='icon"+i+"k.png'>";
+                
+            }
+            document.getElementById("box3").innerHTML=html3;
+        
+        }
+
+
+    </script>
 </head>
-<body>
+<body onload="start()">
     <div id="main">
         <div class="box" id="box1"></div>
         <div class="box" id="box2"></div>
         <div class="box" id="box3"></div>
+        
 
     </div>
 </body>
